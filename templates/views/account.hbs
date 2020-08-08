@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <base href="/">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300&display=swap" rel="stylesheet">
+  <link rel="icon" href="./img/icon.svg" >
+  <link rel="stylesheet" href="./css/reset.css" />
+  <link rel="stylesheet" href="./css/style.css" />
+  <link rel="stylesheet" href="./css/login.css" />
+  <title>Conta</title>
+</head>
+<body>
+  <div class="main-content" >
+    {{>header}}
+
+    <div class="login__main">
+      {{!-- <h1>Crie e gerencie tarefas a fazer em poucos cliques!</h1> --}}
+      <form>
+        <h1>Suas informações</h1>
+
+        <div>
+          <label>Nome</label>
+          <input disabled value="{{user.name}}" />
+        </div>
+
+        <div>
+          <label>Email</label>
+          <input disabled value="{{user.email}}" />
+        </div>
+
+        <span>Conta criada em <span>{{created}}</span></span>
+
+        <button id="exit1">SAIR</button>
+        <button id="exit2">SAIR DE TODAS SESSÕES</button>
+      </form>
+    </div>
+
+  </div>
+  {{>footer}}
+  <script src="./js/account.js"></script>
+</body>
+</html>

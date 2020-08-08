@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <base href="/">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&display=swap" rel="stylesheet">
+  <link rel="icon" href="./img/icon.svg" >
+  <link rel="stylesheet" href="./css/reset.css" />
+  <link rel="stylesheet" href="./css/style.css" />
+  <link rel="stylesheet" href="./css/home.css" />
+  <title>Inicio</title>
+</head>
+<body>
+  <div class="main-content" >
+    {{>header}}
+
+    <div class="home__main" >
+      <h1>Minhas tarefas</h1>
+      <div class="home__task_container">
+        <div style="display:flex; flex-direction: row; align-items: center;">          
+          <h2>A fazer</h2>
+          <button 
+          id="add_task_ptr"
+          onclick="document.querySelector('#add_task').querySelector('#description').focus()"
+          style="margin-left: 20px; background-color: #32CD32; font-weight: 200; padding: 5px; margin-top: 0px">adicionar</button>
+        </div>
+        <div class="home__task_list" id="uncomplete">
+          {{#each tasks}}
+            {{#unless this.completed}}
+              {{>task this}}
+            {{/unless}}
+          {{/each}}
+{{!--           <div class="empty invisible" id="uncomplete_empty">
+            {{>empty_state}}
+          </div> --}}
+          <div class="task add_task active" id="add_task">
+            <label style="margin-bottom: 5px;">Nova tarefa</label>
+            <textarea 
+              onfocus="this.value = this.value;" 
+              rows="1" 
+              maxlength="1024" 
+              id="description" 
+              placeholder="Algo que precise ser feito"></textarea>
+            <span id="error" class="invisible">Descrição não pode estar vazia!</span>
+            <button style="width: 50%; align-self: flex-end;" id="save">Salvar</button>
+          </div>
+        </div>
+
+        <h2>Completas</h2>
+        <div class="home__task_list" id="complete">
+          {{#each tasks}}
+            {{#if this.completed}}
+              {{>task this}}
+            {{/if}}
+          {{/each}}
+          <div class="empty invisible" id="complete_empty">
+            {{>empty_state}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="./js/home.js"></script>
+  <input id="blur-hack" type="text" style="position: absolute; opacity: 0;">
+  {{>footer}}
+</body>
+</html>

@@ -1,0 +1,21 @@
+<header>
+  <nav>
+    <p class="header__title">Gerenciar tarefas</p>
+
+    <div class="header__list">
+      {{#if logged}}
+        <p><a href="/home" >Tarefas</a></p>
+        <p><a href="/account" >Conta</a></p>
+      {{else}}
+        <p><a href="/" >Inicio</a></p>
+        {{#if login}}
+          <p><a href="/register" >Cadastrar</a></p>
+        {{else}}
+          <p><a href="/login" >Entrar</a></p>
+        {{/if}}
+      {{/if}}
+
+      <p><a href="/about" >Sobre</a></p>
+    </div>
+  </nav>
+</header>

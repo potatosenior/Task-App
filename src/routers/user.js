@@ -9,29 +9,37 @@ const router = new express.Router();
 
 router.post('/users', async (req, res) => {
   const user = new User(req.body);
-  
+
   try {
     await user.save();
     const token = await user.generateAuthToken();
-    sendWelcomeEmail(user.email, user.name);
-    res.status(201).send({user, token});
+    // await sendWelcomeEmail(user.email, user.name)
+      // .catch(error => console.log(error))
+    req.session.user = user;
+    req.session.token = token;
+    req.session.save();
+    res.status(201).send();
   } catch ( error ) {
+    // console.log(error)
     res.status(400).send(error.message);
   }
 });
 
 router.get('/users/me', auth, async (req, res) => {
-  // esa funcao so vai rodar se o user estiver autenticado
-  res.send(req.user);
+  // essa funcao so vai rodar se o user estiver autenticado
+  res.send(req.session.user);
 });
 
 router.post('/users/login', async (req, res) => {
   try {
     const user = await User.findByCredentials(req.body.email, req.body.password);
     const token = await user.generateAuthToken();
-
-    res.send({user, token});
-
+    
+    if (user) {
+      req.session.token = token;
+      req.session.save();
+      res.redirect(303, "/home");
+    }
   } catch (error) {
     res.status(400).send();
   }
@@ -39,23 +47,30 @@ router.post('/users/login', async (req, res) => {
 
 router.post('/users/logout', auth, async (req, res) => {
   try {
-    req.user.tokens = req.user.tokens.filter(token => token.token !== req.token)
+    req.session.user.tokens = req.session.user.tokens.filter(token => token.token !== req.session.token)
 
-    await req.user.save();
+    await req.session.user.save();
 
-    res.send();
+    req.session.token = null;
+    req.session.user = null;
+    req.session.save()
+    res.redirect(303, "/");
   } catch (error) {
+    console.log("Erro ao deslogar: ", error)
     res.status(500).send();
   }
 });
 
 router.post('/users/logoutALL', auth, async (req, res) => {
   try {
-    req.user.tokens = []
+    req.session.user.tokens = []
+    
+    await req.session.user.save();
 
-    await req.user.save();
-
-    res.send();
+    req.session.token = null;
+    req.session.user = null;
+    req.session.save()
+    res.redirect(303, "/");
   } catch (error) {
     res.status(500).send();
   }

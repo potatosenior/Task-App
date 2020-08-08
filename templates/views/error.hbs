@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <base href="/">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&display=swap" rel="stylesheet">
+  <link rel="icon" href="./img/icon.svg" >
+  <link rel="stylesheet" href="./css/reset.css" />
+  <link rel="stylesheet" href="./css/style.css" />
+  <title>Oops</title>
+</head>
+<body>
+  <style>
+    .main-container {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      min-height: 70vh;
+      width: 100%;
+      justify-content: center;
+      align-items: center;
+    }
+    .main-container h1 {
+      font-size: 7em;
+      font-weight: 300;
+      margin: 20px;
+    }
+    .main-container a {
+      margin-top: 20px;
+      cursor: pointer;
+      border-radius: 5px;
+      padding: 10px;
+      background-color: #fff;
+      color: #393e46;
+    }
+  </style>
+  <div class="main-content" >
+    {{>header}}
+    
+    <div class="main-container">
+      <h1>{{code}}</h1>
+      <h2>Algo de errado não está certo!</h2>
+      <h2>{{title}}</h2>
+
+      <a href="/">Voltar</a>
+    </div>
+  </div>
+  {{>footer}}
+  <div class="clouds" style="background-image: url(./img/cloud.png);"></div> 
+</body>
+</html>

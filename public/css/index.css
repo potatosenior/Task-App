@@ -1,0 +1,17 @@
+.main-container {
+  display: flex;
+  padding: 50px;
+  flex-direction: column;
+}
+
+.main-container img {
+  width: 300px;
+  margin: 30px;
+}
+
+@media (max-width: 600px) {
+  .main-container img {
+    width: 200px;
+    margin: 30px;
+  }
+}

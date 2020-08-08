@@ -19,14 +19,6 @@ const taskSchema = new mongoose.Schema({
   timestamps: true
 });
 
-taskSchema.pre('save', async function (next){
-  const task = this;
-
-  console.log('task vai ser salva!');
-
-  next();
-})
-
 const Task = mongoose.model('Task', taskSchema);
 
 module.exports = Task;

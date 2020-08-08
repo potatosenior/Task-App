@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <base href="/">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300&display=swap" rel="stylesheet">
+  <link rel="icon" href="./img/icon.svg" >
+  <link rel="stylesheet" href="./css/reset.css" />
+  <link rel="stylesheet" href="./css/style.css" />
+  <link rel="stylesheet" href="./css/login.css" />
+  <title>Entrar</title>
+</head>
+<body>
+  <div class="main-content" >
+    {{>header}}
+
+    <div class="login__main">
+      {{!-- <h1>Crie e gerencie tarefas a fazer em poucos cliques!</h1> --}}
+      <form id="register">
+        <h1>Criar uma conta</h1>
+
+        <div>
+          <label>Nome</label>
+          <input id="name" required placeholder="Fulano" autocomplete="name"/>
+        </div>
+
+        <div>
+          <label>Email</label>
+          <input id="email" type="email" required placeholder="email@example.com" autocomplete="email" />
+        </div>
+
+        <div>
+          <label>Senha</label>
+          <input minlength="6" type="password" id="pass1" required placeholder="******" autocomplete="current-password" />
+        </div>
+
+        <div>
+          <label>Confirmar senha</label>
+          <input minlength="6" type="password" id="pass2" required placeholder="******" autocomplete="off" />
+        </div>
+
+        <span>Já tem uma conta? <a href="/login">Fazer login!</a> </span>
+
+        <button type="submit">CONTINUAR</button>
+      </form>
+    </div>
+
+  </div>
+  {{>footer}}
+  <script src="./js/register.js"></script>
+</body>
+</html>

@@ -6,7 +6,9 @@
   "dependencies": {
     "@sendgrid/mail": "^7.2.1",
     "bcryptjs": "^2.4.3",
+    "cookie-session": "^1.4.0",
     "express": "^4.17.1",
+    "express-session": "^1.17.1",
     "hbs": "^4.1.1",
     "jsonwebtoken": "^8.5.1",
     "mongodb": "^3.5.9",
@@ -17,11 +19,17 @@
   },
   "devDependencies": {
     "env-cmd": "^10.1.0",
-    "nodemon": "^2.0.4"
+    "jest": "^26.1.0",
+    "nodemon": "^2.0.4",
+    "supertest": "^4.0.2"
   },
   "scripts": {
     "start": "node src/index",
     "dev": "env-cmd -f \"./config/dev.env\" nodemon src/index",
-    "db": "\"D:/1 - Arquivos de Progamas/MongoDb/bin/mongod.exe\" --dbpath=\"D:/1 - Arquivos de Progamas/mongodb-data\""
+    "db": "\"D:/1 - Arquivos de Progamas/MongoDb/bin/mongod.exe\" --dbpath=\"D:/1 - Arquivos de Progamas/mongodb-data\"",
+    "test": "env-cmd -f \"./config/test.env\" jest --env=node"
+  },
+  "jests": {
+    "testEnvironment": "node"
   }
 }

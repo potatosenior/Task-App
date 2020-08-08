@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <base href="/">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300&display=swap" rel="stylesheet">
+  <link rel="icon" href="./img/icon.svg" >
+  <link rel="stylesheet" href="./css/reset.css" />
+  <link rel="stylesheet" href="./css/style.css" />
+  <link rel="stylesheet" href="./css/login.css" />
+  <title>Entrar</title>
+</head>
+<body>
+  <div class="main-content" >
+    {{>header}}
+
+    <div class="login__main">
+      {{!-- <h1>Crie e gerencie tarefas a fazer em poucos cliques!</h1> --}}
+      <form>
+        <h1>Entrar</h1>
+
+        <div>
+          <label>Email</label>
+          <input id="email" placeholder="email@example.com" required autofocus autocomplete="email" type="email" value="joao1@gmail.com"/>
+        </div>
+
+        <div>
+          <label >Senha</label>
+          <input id="password" placeholder="******" required autocomplete="current-password" type="password" value="123123"/>
+        </div>
+
+        <span>Ainda não tem uma conta? <a href="/register">Cadastre-se já!</a> </span>
+
+        <button>CONTINUAR</button>
+      </form>
+    </div>
+
+  </div>
+  {{>footer}}
+  <script src="./js/login.js"></script>
+</body>
+</html>

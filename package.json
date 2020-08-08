@@ -27,7 +27,8 @@
     "start": "node src/index",
     "dev": "env-cmd -f \"./config/dev.env\" nodemon src/index",
     "db": "\"D:/1 - Arquivos de Progamas/MongoDb/bin/mongod.exe\" --dbpath=\"D:/1 - Arquivos de Progamas/mongodb-data\"",
-    "test": "env-cmd -f \"./config/test.env\" jest --env=node"
+    "test": "env-cmd -f \"./config/test.env\" jest --env=node",
+    "deploy": "git push origin master && git push heroku master"
   },
   "jests": {
     "testEnvironment": "node"
